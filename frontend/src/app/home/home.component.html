@@ -1,0 +1,20 @@
+<div class="border border-dark rounded-lg p-2">
+
+<h5>Home</h5>
+
+<div *ngFor="let item of tab" class="border m-2 p-2 row">
+  <div class="col-md-1 text-right">Date : </div>
+  <div class="col-md-11">{{ item.date | date:'medium'}}</div>
+  
+  <div class="col-md-1 text-right">Celsius : </div>
+  <div class="col-md-11">{{ item.temperatureC | number:'1.2'}} °</div>
+  
+  <div class="col-md-1 text-right">Fahrenheit : </div>
+  <div class="col-md-11">{{ item.temperatureF | number:'1.2'}} °</div>
+  
+  <div class="col-md-1 text-right">Summary : </div>
+  <div class="col-md-11">{{ item.summary }}</div>
+</div>
+
+</div>
+

@@ -1,0 +1,8 @@
+<div class="border m-2 p-2">
+    <h5>Login</h5>
+
+    <button [disabled]="isAuth()" type="button" class="btn btn-success m-2"
+        (click)="onLogin()">Login</button>
+    <button [disabled]="!isAuth()" type="button" class="btn btn-danger m-2" (click)="onLogout()">Logout</button>
+
+</div>
