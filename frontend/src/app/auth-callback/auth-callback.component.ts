@@ -7,11 +7,12 @@ import { AuthentificationService } from '../services/authentification.service';
   templateUrl: './auth-callback.component.html',
   styleUrls: ['./auth-callback.component.css']
 })
+
 export class AuthCallbackComponent implements OnInit {
+ 
+  error: boolean = false;
 
   constructor(private authentificationService: AuthentificationService, private router: Router) { }
-  
-  error: boolean = false;
 
   ngOnInit(): void {
     this.authentificationService.completeAuthentication()

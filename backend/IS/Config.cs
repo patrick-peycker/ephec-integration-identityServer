@@ -61,8 +61,11 @@ namespace IS
 
 				new Client {
 					ClientId = "angular_spa",
+					ClientName = "Angula SPA",
+
 					AllowedGrantTypes = GrantTypes.Code,
 					RequirePkce = true,
+
 					RequireClientSecret = false,
 					
 					AllowedScopes = new List<string> {

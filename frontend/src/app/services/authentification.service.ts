@@ -2,6 +2,10 @@ import { UserManager, User, UserManagerSettings, WebStorageStateStore } from 'oi
 
 export class AuthentificationService {
 
+  private isAuth: boolean;
+  private userManager: UserManager;
+  private user: User = null;
+
   constructor() {
     this.isAuth = false;
     this.userManager = new UserManager(this.getClientSettings());
@@ -18,10 +22,6 @@ export class AuthentificationService {
       );
   }
 
-  private isAuth: boolean;
-  private userManager: UserManager;
-  private user: User = null;
-
   private getClientSettings(): UserManagerSettings {
     return {
       // Url IS
@@ -34,8 +34,8 @@ export class AuthentificationService {
       response_type: "code",
       // Scope
       scope: "openid profile api1",
-      // Where to redirect to after logoutks
-      post_logout_redirect_uri: 'http://localhost:4200/',
+      // Where to redirect to after logouts
+      post_logout_redirect_uri: 'http://localhost:4200',
       // Where to save the token
       userStore: new WebStorageStateStore({ store: window.localStorage })
     }
@@ -60,6 +60,5 @@ export class AuthentificationService {
   }
 
   signOut() {
-    return this.userManager.signoutRedirect();
-  }
+    return this.userManager.signoutRedirect() }
 }

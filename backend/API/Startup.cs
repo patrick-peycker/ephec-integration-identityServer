@@ -9,12 +9,16 @@ namespace API
 {
 	public class Startup
 	{
+		public IConfiguration Configuration { get; }
+
+		readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
 		public Startup(IConfiguration configuration)
 		{
 			Configuration = configuration;
 		}
 
-		public IConfiguration Configuration { get; }
+
 
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
@@ -22,7 +26,7 @@ namespace API
 			// Permettre à l'Api d'être accessible par un client externe à la solution
 			services.AddCors(options =>
 			{
-				options.AddPolicy(name: "MyAllowSpecificOrigins",
+				options.AddPolicy(name: MyAllowSpecificOrigins,
 						builder => builder
 						.WithOrigins("http://localhost:4200")
 						.AllowAnyHeader()
@@ -62,7 +66,7 @@ namespace API
 			}
 
 			app.UseRouting();
-			app.UseCors("MyAllowSpecificOrigins");
+			app.UseCors(MyAllowSpecificOrigins);
 			app.UseAuthentication();
 			app.UseAuthorization();
 

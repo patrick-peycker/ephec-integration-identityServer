@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
 import { AuthentificationService } from '../services/authentification.service';
 
 @Component({
@@ -8,9 +6,10 @@ import { AuthentificationService } from '../services/authentification.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent implements OnInit {
 
-  constructor(private authSrv:AuthentificationService,private route:ActivatedRoute,private router:Router ) {     
+  constructor(private authSrv:AuthentificationService) {     
   }
   ngOnInit(): void {
   }
@@ -26,5 +25,4 @@ export class LoginComponent implements OnInit {
   onLogout() {
     this.authSrv.signOut();
   }
-
 }

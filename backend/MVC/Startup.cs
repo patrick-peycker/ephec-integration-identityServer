@@ -37,14 +37,14 @@ namespace MVC
 					options.ClientId = "mvc";
 					options.ClientSecret = "secret";
 
-					// Authorization Code Flow
+					// Authorization Code Flow - Comment ResponseType for Implicit Flow
 					options.ResponseType = "code";
 
 					options.SaveTokens = true;
 
 					options.Scope.Add("address");
 					options.Scope.Add("email");
-					options.Scope.Add("IdentityApi");
+					options.Scope.Add("api1");
 				});
 
 		}

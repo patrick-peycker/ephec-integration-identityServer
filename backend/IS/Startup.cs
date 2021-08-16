@@ -20,6 +20,8 @@ namespace IS
 		public IWebHostEnvironment Environment { get; }
 		public IConfiguration Configuration { get; }
 
+		readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
 		public Startup(IWebHostEnvironment environment, IConfiguration configuration)
 		{
 			Environment = environment;
@@ -31,7 +33,7 @@ namespace IS
 			// Permettre à l'Api d'être accessible par un client externe à la solution
 			services.AddCors(options =>
 			{
-				options.AddPolicy(name: "MyAllowSpecificOrigins",
+				options.AddPolicy(name: MyAllowSpecificOrigins,
 						builder => builder
 						.WithOrigins("http://localhost:4200")
 						.AllowAnyHeader()
@@ -91,7 +93,7 @@ namespace IS
 			app.UseStaticFiles();
 
 			app.UseRouting();
-			app.UseCors("MyAllowSpecificOrigins");
+			app.UseCors(MyAllowSpecificOrigins);
 			app.UseIdentityServer();
 			app.UseAuthorization();
 			app.UseEndpoints(endpoints =>

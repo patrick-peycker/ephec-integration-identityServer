@@ -54,6 +54,7 @@ namespace MVC.Controllers
 		{
 			var accessToken = await HttpContext.GetTokenAsync("access_token");
 			var client = new HttpClient();
+
 			client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
 			var content = await client.GetStringAsync("http://localhost:5001/api/identity");
 
